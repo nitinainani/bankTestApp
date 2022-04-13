@@ -38,9 +38,32 @@ namespace BankConsoleApp.Models
             return this;
         }
 
+        public void PerformTransfer(long fromAccountNumber, long toAccountNumber, decimal amount)
+        {
+            try
+            {
+                var fromAccount = GetAccount(fromAccountNumber);
+                var toAccount = GetAccount(toAccountNumber);
+
+                if (fromAccount != null && toAccount != null)
+                {
+                    fromAccount.Withdraw(amount);
+                    toAccount.Deposit(amount);
+                }
+                else
+                {
+                    throw new Exception("Please make sure both account numbers are valid account");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }            
+        }
+
+        
         public void PerformDepositOrWithdrawal(TransactionType transactionType, decimal amount, long accountNumber)
         {
-
             try
             {
                 var account = GetAccount(accountNumber);
@@ -60,12 +83,12 @@ namespace BankConsoleApp.Models
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
-
         }
 
+
+        //this can be a service that can be injected
         public string CheckBalance(long accountNumber)
         {
             var account = GetAccount(accountNumber);
@@ -82,6 +105,7 @@ namespace BankConsoleApp.Models
             return "Invalid Account Number";
         }
 
+        // this can be a service and can be injected
         public IAccount GetAccount(long accountNumber)
         {
             return Accounts.FirstOrDefault(x => ((Account)x).AccountNumber == accountNumber);

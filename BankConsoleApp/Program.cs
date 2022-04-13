@@ -17,14 +17,14 @@ namespace BankConsoleApp {
 
 
             // deposit
-            bank.PerformDepositOrWithdrawal(TransactionType.Deposit, 600, 1);
+            bank.PerformDepositOrWithdrawal(TransactionType.Deposit, 600, 1); //1100 Balance
             Console.WriteLine(bank.CheckBalance(1));
 
 
-            bank.PerformDepositOrWithdrawal(TransactionType.Deposit, 700, 2);
+            bank.PerformDepositOrWithdrawal(TransactionType.Deposit, 700, 2); // 2700 Balance
             Console.WriteLine(bank.CheckBalance(2));
 
-            bank.PerformDepositOrWithdrawal(TransactionType.Deposit, 1700, 3);
+            bank.PerformDepositOrWithdrawal(TransactionType.Deposit, 1700, 3); // 11700 Balance
             Console.WriteLine(bank.CheckBalance(3));
 
 
@@ -39,10 +39,24 @@ namespace BankConsoleApp {
             Console.WriteLine(bank.CheckBalance(3));
 
 
-            //withdraw from Individual Account
+            //withdraw from Individual Account more than 500
 
-            bank.PerformDepositOrWithdrawal(TransactionType.Withdraw, 501, 2);
+            bank.PerformDepositOrWithdrawal(TransactionType.Withdraw, 501, 2); // Invalid operation
 
+
+            // perform transfer from checking to Individual InvestmentAccount
+
+            bank.PerformTransfer(1, 2, 100);
+            Console.WriteLine(bank.CheckBalance(1)); // 900 Balance
+            Console.WriteLine(bank.CheckBalance(2)); // 2650 Balance
+
+
+            //perform overdraft transfer and get error message
+
+            bank.PerformTransfer(1, 2, 1000);
+
+            // invalid account Number error Message
+            bank.PerformTransfer(5, 6, 100);
 
         }
     }
