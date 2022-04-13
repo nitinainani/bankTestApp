@@ -37,19 +37,29 @@ namespace BankConsoleApp
 
         public void PerformDepositOrWithdrawal(TransactionType transactionType, decimal amount, long accountNumber) {
 
-            var account = GetAccount(accountNumber);
-            if (account != null) {
-                if (transactionType == TransactionType.Withdraw)
+            try
+            {
+                var account = GetAccount(accountNumber);
+                if (account != null)
                 {
-                    account.Withdraw(amount);
-                }
-                else if (transactionType == TransactionType.Deposit)
-                {
+                    if (transactionType == TransactionType.Withdraw)
+                    {
+                        account.Withdraw(amount);
+                    }
+                    else if (transactionType == TransactionType.Deposit)
+                    {
                         account.Deposit(amount);
+                    }
+                    return;
                 }
-                return;
+                throw new Exception("Invalid Account Number.");
             }
-            throw new Exception("Invalid Account Number.");      
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+                
         }
 
         public string CheckBalance(long accountNumber) {

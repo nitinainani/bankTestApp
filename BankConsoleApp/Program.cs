@@ -4,7 +4,7 @@ namespace BankConsoleApp {
     public class Program {
         public static void Main(string[] args) {
             Console.WriteLine("Hello Nitin");
-
+            // As this is data part it should be part of Repo
             var bank = new Bank().SetBankName("Nitin's Bank").AddAccounts(new List<IAccount> { 
             
                 new CheckingAccount(1, 500),
@@ -36,7 +36,9 @@ namespace BankConsoleApp {
             Console.WriteLine(bank.CheckBalance(3));
 
 
-            //withdraw from Indic
+            //withdraw from Individual Account
+
+            bank.PerformDepositOrWithdrawal(TransactionType.Withdraw, 501, 2);
 
 
         }
