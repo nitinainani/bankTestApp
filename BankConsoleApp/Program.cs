@@ -1,5 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 //Console.WriteLine("Hello, World!");
+using BankConsoleApp.Contract;
+using BankConsoleApp.Models;
+
 namespace BankConsoleApp {
     public class Program {
         public static void Main(string[] args) {
