@@ -21,9 +21,10 @@ namespace BankConsoleApp.Abstraction
                 AccountNumber = accountNumber;
             TypeOfAccount = accountType;
 
-            if (owner != null) {
-                AccountOwner = owner;
+            if (owner == null) {
+                throw new Exception("Invalid Owner Info");
             }
+            AccountOwner = owner;
         }
 
         public virtual decimal Deposit(decimal amount)

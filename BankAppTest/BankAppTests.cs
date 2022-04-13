@@ -160,6 +160,7 @@ namespace BankAppTest
         [Test]
         public void TestAddInvalidOnwerValue_ThrowsException() {
             Assert.Throws<Exception>(() => new CheckingAccount(123, new Owner(-1, "")));
+            Assert.Throws<Exception>(() => new CheckingAccount(123, null));
         }
     }
 }
