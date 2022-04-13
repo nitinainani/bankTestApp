@@ -54,8 +54,15 @@ namespace BankConsoleApp
 
         public string CheckBalance(long accountNumber) {
             var account = GetAccount(accountNumber);
-            if (account != null)
-                return $"Account Balance is {((Account)account).Balance}";
+            if (account != null) {
+                var actualAcct = (Account)account;
+                var message=  $"Account Balance is {actualAcct.Balance} for Account Number {actualAcct.AccountNumber} Account type {actualAcct.TypeOfAccount}";
+                if (actualAcct is IndividualInvestmentAcct)
+                    message += $"InvestmentAcctType is IndividualAccount";
+                if (actualAcct is CorporateInvestmentAcct)
+                    message += $"InvestmentActtType is CorporateAccount";
+                return message;
+            }
             return "Invalid Account Number";
         }
 

@@ -15,20 +15,30 @@ namespace BankConsoleApp {
 
             // deposit
             bank.PerformDepositOrWithdrawal(TransactionType.Deposit, 600, 1);
-            Console.Write(bank.CheckBalance(1));
+            Console.WriteLine(bank.CheckBalance(1));
 
 
             bank.PerformDepositOrWithdrawal(TransactionType.Deposit, 700, 2);
-            Console.Write(bank.CheckBalance(2));
+            Console.WriteLine(bank.CheckBalance(2));
 
             bank.PerformDepositOrWithdrawal(TransactionType.Deposit, 1700, 3);
-            Console.Write(bank.CheckBalance(3));
+            Console.WriteLine(bank.CheckBalance(3));
 
 
             //withdraw
             bank.PerformDepositOrWithdrawal(TransactionType.Withdraw, 100, 1);//1000 balance
+            Console.WriteLine(bank.CheckBalance(1));
+
             bank.PerformDepositOrWithdrawal(TransactionType.Withdraw, 150, 2); // 2550 balance
+            Console.WriteLine(bank.CheckBalance(2));
+
             bank.PerformDepositOrWithdrawal(TransactionType.Withdraw, 700, 3); // 11000 balance
+            Console.WriteLine(bank.CheckBalance(3));
+
+
+            //withdraw from Indic
+
+
         }
     }
 }
