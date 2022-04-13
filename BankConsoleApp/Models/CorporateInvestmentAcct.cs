@@ -9,9 +9,9 @@ namespace BankConsoleApp.Models
 {
     public class CorporateInvestmentAcct : InvestmentAccount
     {
-        public CorporateInvestmentAcct(long accountNumber) : base(accountNumber, InvestmentAccountType.Corporate)
+        public CorporateInvestmentAcct(long accountNumber, Owner owner) : base(accountNumber, InvestmentAccountType.Corporate, owner)
         { }
-        public CorporateInvestmentAcct(long accountNumber, decimal addBalance) : base(accountNumber, InvestmentAccountType.Corporate)
+        public CorporateInvestmentAcct(long accountNumber, decimal addBalance, Owner owner) : base(accountNumber, InvestmentAccountType.Corporate, owner)
         {
             Deposit(addBalance);
         }

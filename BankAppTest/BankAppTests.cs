@@ -24,9 +24,9 @@ namespace BankAppTest
         public BankAppTests()
         {
             bank = new Bank().SetBankName("Nitin's Bank").AddAccounts(new List<IAccount> {
-                new CheckingAccount(1, 500),
-                new IndividualInvestmentAcct(2, 2000),
-                new CorporateInvestmentAcct(3,10000)
+                new CheckingAccount(1, 500, new Owner(99, "Test")),
+                new IndividualInvestmentAcct(2, 2000, new Owner(99, "Test")),
+                new CorporateInvestmentAcct(3, 10000, new Owner(99, "Test"))
             });
         }
         [SetUp]
@@ -125,9 +125,9 @@ namespace BankAppTest
         public void TestInvestmentPersonalAccount_MoreThan500Withdrawal_DoesNotWithDraw_BalanceRemainsSame()
         {
             var bankIndInv = new Bank().SetBankName("Nitin's Bank").AddAccounts(new List<IAccount> {
-                new CheckingAccount(1, 500),
-                new IndividualInvestmentAcct(2, 2000),
-                new CorporateInvestmentAcct(3,10000)
+                new CheckingAccount(1, 500, new Owner(99, "Test")),
+                new IndividualInvestmentAcct(2, 2000, new Owner(99, "Test")),
+                new CorporateInvestmentAcct(3, 10000, new Owner(99, "Test"))
             });
             bankIndInv.PerformDepositOrWithdrawal(TransactionType.Withdraw, 501, 2);
             var secondAccountInvest = (Account)bankIndInv.GetAccount(2);
@@ -154,8 +154,12 @@ namespace BankAppTest
         [Test]
         public void TestInvalidAccountNumber_AccountDoesNotExist_ErrorHandled()
         {
-
             Assert.DoesNotThrow(() => bank.PerformTransfer(5, 6, 100));
+        }
+
+        [Test]
+        public void TestAddInvalidOnwerValue_ThrowsException() {
+            Assert.Throws<Exception>(() => new CheckingAccount(123, new Owner(-1, "")));
         }
     }
 }

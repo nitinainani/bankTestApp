@@ -10,9 +10,9 @@ namespace BankConsoleApp {
             // As this is data part it should be part of Repo
             var bank = new Bank().SetBankName("Nitin's Bank").AddAccounts(new List<IAccount> { 
             
-                new CheckingAccount(1, 500),
-                new IndividualInvestmentAcct(2, 2000),
-                new CorporateInvestmentAcct(3,10000)
+                new CheckingAccount(1, 500, new Owner(99, "Test")),
+                new IndividualInvestmentAcct(2, 2000, new Owner(99, "Test")),
+                new CorporateInvestmentAcct(3,10000, new Owner(99, "Test"))
             });
 
 

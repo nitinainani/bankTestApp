@@ -9,10 +9,10 @@ namespace BankConsoleApp.Models
 {
     public class CheckingAccount : Account
     {
-        public CheckingAccount(long accountNumber) : base(accountNumber, AccountType.Checking)
+        public CheckingAccount(long accountNumber, Owner owner) : base(accountNumber, AccountType.Checking, owner)
         { }
 
-        public CheckingAccount(long accountNumber, decimal addBalance) : base(accountNumber, AccountType.Checking)
+        public CheckingAccount(long accountNumber, decimal addBalance, Owner owner) : base(accountNumber, AccountType.Checking, owner)
         {
             Deposit(addBalance);
         }

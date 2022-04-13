@@ -9,10 +9,10 @@ namespace BankConsoleApp.Models
 {
     public class IndividualInvestmentAcct : InvestmentAccount
     {
-        public IndividualInvestmentAcct(long accountNumber) : base(accountNumber, InvestmentAccountType.Individual)
+        public IndividualInvestmentAcct(long accountNumber, Owner owner) : base(accountNumber, InvestmentAccountType.Individual, owner)
         { }
 
-        public IndividualInvestmentAcct(long accountNumber, decimal addBalance) : base(accountNumber, InvestmentAccountType.Individual)
+        public IndividualInvestmentAcct(long accountNumber, decimal addBalance, Owner owner) : base(accountNumber, InvestmentAccountType.Individual, owner)
         {
             Deposit(addBalance);
         }
