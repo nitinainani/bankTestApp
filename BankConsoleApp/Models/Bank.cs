@@ -19,6 +19,8 @@ namespace BankConsoleApp.Models
         {
             if (!string.IsNullOrWhiteSpace(bankName))
                 Name = bankName;
+            else
+                throw new Exception("BankName is Required");
             return this;
         }
 
